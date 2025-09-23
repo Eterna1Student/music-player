@@ -16,20 +16,34 @@ function App() {
         }
     ]
 
+    const selectedTrackId = 2
+
+    if (tracks === null) {
+        return 'Loading...'
+    }
+
+    if (tracks.length === 0) {
+        return 'No tracks'
+    }
+
     return (
         <div>
             <h1>Musicfun Player</h1>
             <ul>
-                {tracks.map(track => {
-                    return (
-                        <li key={track.id}>
-                            <div>
-                                {track.title}
-                            </div>
-                            <audio src={track.url} controls></audio>
-                        </li>
-                    )
-                })}
+                {
+                    tracks.map(track => {
+                        return (
+                            <li key={track.id} style={{
+                                border: track.id === selectedTrackId && '1px solid orange'
+                            }}>
+                                <div>
+                                    {track.title}
+                                </div>
+                                <audio src={track.url} controls></audio>
+                            </li>
+                        )
+                    })
+                }
             </ul>
         </div>
     )
