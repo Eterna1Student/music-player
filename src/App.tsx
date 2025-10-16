@@ -15,6 +15,20 @@ function App() {
             .then(json => setTracks(json.data))
     }, []); // Такое использование useEffect() позволяет сделать запрос единожды, при монтировании обЪекта
 
+    useEffect(() => {
+
+        if(!selectedTrackId){
+            return
+        }
+
+        fetch(`https://musicfun.it-incubator.app/api/1.0/playlists/tracks/${selectedTrackId}`, {
+            headers: {
+                'api-key': '8c9afb17-0dce-4d2e-934c-4a939c1ab518'
+            }
+        }).then(res => res.json())
+            .then(json => setSelectedTrack(json.data))
+    }, [selectedTrackId])
+
     if (tracks === null) {
         return (
             <div>
@@ -53,13 +67,6 @@ function App() {
                                 }}>
                                     <div onClick={() => {
                                         setSelectedTrackId(track.id)
-
-                                        fetch(`https://musicfun.it-incubator.app/api/1.0/playlists/tracks/${track.id}`, {
-                                            headers: {
-                                                'api-key': '8c9afb17-0dce-4d2e-934c-4a939c1ab518'
-                                            }
-                                        }).then(res => res.json())
-                                            .then(json => setSelectedTrack(json.data))
                                     }}>
                                         {track.attributes.title}
                                     </div>
