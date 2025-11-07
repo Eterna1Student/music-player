@@ -4,9 +4,8 @@ import {useState} from "react";
 
 export function MainPage() {
 
-    const [trackId, setTrackId] = useState(null)
-
-    const handleTrackSelect = (id) => {setTrackId(id)}
+    const [trackId, setTrackId] = useState<null | string>(null)
+    const handleTrackSelect = (id: null | string): void => {setTrackId(id)}
 
     return (
         <div>

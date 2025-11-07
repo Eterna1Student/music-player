@@ -1,10 +1,22 @@
 import {useEffect, useState} from "react";
 
-export function TracksDetail({trackId}) {
+type TrackDetailsAttributes = {
+    title: string
+    lyrics: string
+}
 
-    const [selectedTrack, setSelectedTrack] = useState(null)
-    console.log(selectedTrack)
-    const selectedTrackId = trackId
+type TrackDetailsOutputData = {
+    id: string
+    attributes: TrackDetailsAttributes
+}
+
+type Props = {
+    trackId: string | null
+}
+
+export function TracksDetail({trackId}: Props) {
+
+    const [selectedTrack, setSelectedTrack] = useState<TrackDetailsOutputData | null>(null)
 
     useEffect(() => {
 

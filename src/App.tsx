@@ -1,10 +1,32 @@
 import {useEffect, useState} from "react";
 
+type TrackDetailsResource = {
+    id: string;
+    attributes: {
+        title: string;
+        lyrics: string;
+    }
+}
+
+type TrackAttachment = {
+    url: string;
+}
+
+type TrackListItemAttributes = {
+    title: string;
+    attachments: Array<TrackAttachment>
+}
+
+type TrackListItemResource = {
+    id: string;
+    attributes: TrackListItemAttributes;
+}
+
 function App() {
 
-    const [selectedTrackId, setSelectedTrackId] = useState(null) // id выбранного трека
-    const [selectedTrack, setSelectedTrack] = useState(null)
-    const [tracks, setTracks] = useState(null) // Массив треков, который мы получаем через fetch в useEffect()
+    const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null) // id выбранного трека
+    const [selectedTrack, setSelectedTrack] = useState<TrackDetailsResource | null>(null)
+    const [tracks, setTracks] = useState<Array<TrackListItemResource> | null>(null) // Массив треков, который мы получаем через fetch в useEffect()
 
     useEffect(() => {
         fetch('https://musicfun.it-incubator.app/api/1.0/playlists/tracks', {
@@ -63,7 +85,7 @@ function App() {
 
                             return (
                                 <li key={track.id} style={{
-                                    border: track.id === selectedTrack?.id && '1px solid orange'
+                                    border: track.id === selectedTrack?.id ? '1px solid orange' : ''
                                 }}>
                                     <div onClick={() => {
                                         setSelectedTrackId(track.id)

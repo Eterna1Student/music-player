@@ -1,9 +1,16 @@
 import {useEffect, useState} from "react";
-import {TrackItem} from "./TrackItem.tsx";
+import {TrackItem, type TrackListItemOutput} from "./TrackItem.tsx";
 
-export function TracksList({onTrackSelect,selectedTrackId}) {
 
-    const [tracks, setTracks] = useState(null) // Массив треков, который мы получаем через fetch в useEffect()
+
+type Props = {
+    onTrackSelect: (id: string | null) => void
+    selectedTrackId: string | null
+}
+
+export function TracksList({onTrackSelect, selectedTrackId}:Props) {
+
+    const [tracks, setTracks] = useState<Array<TrackListItemOutput> | null>(null) // Массив треков, который мы получаем через fetch в useEffect()
 
 
     useEffect(() => {
@@ -35,13 +42,20 @@ export function TracksList({onTrackSelect,selectedTrackId}) {
     const handleResetClick = () => {
         onTrackSelect?.(null)
     }
-    const handleClick = (trackId) => {
+    const handleClick = (trackId: string) => {
         onTrackSelect?.(trackId)
     }
 
     return (
-        <>
-            <button onClick={handleResetClick}>reset</button>
+        <div style={{display: 'flex', flexDirection: 'column'}}>
+            <button style={
+                {
+                    width: '100px',
+                    margin: '0 0 0 auto'
+                }
+            }
+                    onClick={handleResetClick}>reset
+            </button>
 
             <ul>
                 {
@@ -56,7 +70,7 @@ export function TracksList({onTrackSelect,selectedTrackId}) {
                     })
                 }
             </ul>
-        </>
+        </div>
 
     )
 }
