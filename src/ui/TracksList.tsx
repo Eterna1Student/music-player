@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
-import {TrackItem, type TrackListItemOutput} from "./TrackItem.tsx";
-
-
+import {TrackItem} from "./TrackItem.tsx";
+import {getTracks, type TrackListItemOutput} from "../dal/api.ts";
 
 type Props = {
     onTrackSelect: (id: string | null) => void
@@ -14,12 +13,7 @@ export function TracksList({onTrackSelect, selectedTrackId}:Props) {
 
 
     useEffect(() => {
-        fetch('https://musicfun.it-incubator.app/api/1.0/playlists/tracks', {
-            headers: {
-                'api-key': '8c9afb17-0dce-4d2e-934c-4a939c1ab518'
-            }
-        }).then(res => res.json())
-            .then(json => setTracks(json.data))
+        getTracks().then(json => setTracks(json.data))
     }, []); // Такое использование useEffect() позволяет сделать запрос единожды, при монтировании обЪекта
 
     if (tracks === null) {

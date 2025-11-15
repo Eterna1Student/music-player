@@ -1,16 +1,5 @@
-type AttachmentDto = {
-    url: string
-}
+import type {TrackListItemOutput} from "../dal/api.ts";
 
-type TrackListItemAttributes = {
-    title: string
-    attachments: Array<AttachmentDto>
-}
-
-export type TrackListItemOutput = {
-    id: string
-    attributes: TrackListItemAttributes
-}
 
 type Props = {
     onSelect: (trackId: string) => void
