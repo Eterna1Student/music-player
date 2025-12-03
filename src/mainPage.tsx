@@ -1,12 +1,12 @@
 import {TracksList} from "./ui/TracksList.tsx";
 import {TracksDetail} from "./ui/TracksDetail.tsx";
-import {useState} from "react";
+import {useTrackSelection} from "./bll/useTrackSelection.tsx";
 
 export function MainPage() {
-
-    const [trackId, setTrackId] = useState<null | string>(null)
-    const handleTrackSelect = (id: null | string): void => {setTrackId(id)}
-
+  const {trackId, setTrackId} = useTrackSelection() // Это хук радихука)) Тренировал понимание кастомных хуков
+  const handleTrackSelect = (id: null | string): void => {
+    setTrackId(id)
+  }
     return (
         <div>
             <div style={{display: 'flex', gap: '20px'}}>
