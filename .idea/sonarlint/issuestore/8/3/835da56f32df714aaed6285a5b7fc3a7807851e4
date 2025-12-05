@@ -1,0 +1,4 @@
+
+‘typescript:S6848Z"ÂAvoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element.(ŞæƒËùÿÿÿÿ8ÁúĞù¥3J$28394d1d-da41-45ba-ace8-2f3f451047a0
+­typescript:S1082Z"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(ŞæƒËùÿÿÿÿ8ÂúĞù¥3J$75c9c51a-d446-4f78-84c4-80ec31808a15
+štypescript:S4084_"LMedia elements such as <audio> and <video> must have a <track> for captions.(´œÿ¼ÿÿÿÿÿ8ÂúĞù¥3J$e79f00cf-bb7c-49d2-aeac-44f519611257

@@ -1,0 +1,10 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.resetBtn {
+    width: 100px;
+    margin:  0 0 0 auto;
+}

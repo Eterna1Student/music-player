@@ -1,5 +1,6 @@
 import {TrackItem} from "./TrackItem.tsx";
 import {useTracks} from "../bll/useTracks.tsx";
+import s from './TracksList.module.css'
 
 type Props = {
     onTrackSelect: (id: string | null) => void
@@ -34,15 +35,10 @@ export function TracksList({onTrackSelect, selectedTrackId}: Props) {
   }
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column'}}>
-      <button style={
-        {
-          width: '100px',
-          margin: '0 0 0 auto'
-        }
-      }
-              onClick={handleResetClick}>reset
-      </button>
+    <div className={s.main}>
+      <button className={s.resetBtn}
+              onClick={handleResetClick}
+      >reset</button>
 
       <ul>
         {

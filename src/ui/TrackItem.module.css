@@ -1,0 +1,8 @@
+.item {
+    padding: 5px;
+    list-style-type: none;
+    cursor: pointer;
+}
+.itemActive {
+    outline: 1px solid orange;
+}
